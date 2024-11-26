@@ -73,3 +73,7 @@ Test Evaluation: 100%|███████████████████�
 Test Loss: 4.3189, Test Perplexity: 75.1059
 ```
 
+And text generation can be used by using `generate.py`:
+```
+python generate.py --seed_text "some words" --cuda --..(some other params)
+```
