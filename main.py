@@ -118,6 +118,11 @@ def main(args):
             best_valid_ppl = valid_ppl
             torch.save(model.state_dict(), args.save_path)
             print(f'Best model saved with Perplexity: {best_valid_ppl:.4f}')
+            # save vocab
+            vocab_save_path = os.path.splitext(args.save_path)[0] + '_vocab.pkl'
+            with open(vocab_save_path, 'wb') as f:
+                pickle.dump(vocab, f)
+            print(f'Vocabulary saved to {vocab_save_path}')
 
     model.load_state_dict(torch.load(args.save_path))
     test_loss, test_ppl = trainer.test(test_loader)
